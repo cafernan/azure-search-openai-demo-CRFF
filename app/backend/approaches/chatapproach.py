@@ -21,30 +21,53 @@ class ChatApproach(Approach, ABC):
     ASSISTANT = "assistant"
 
     query_prompt_few_shots = [
-        {"role": USER, "content": "How did crypto do last year?"},
-        {"role": ASSISTANT, "content": "Summarize Cryptocurrency Market Dynamics from last year"},
-        {"role": USER, "content": "What are my health plans?"},
-        {"role": ASSISTANT, "content": "Show available health plans"},
+        #{"role": USER, "content": "How did crypto do last year?"},
+        #{"role": ASSISTANT, "content": "Summarize Cryptocurrency Market Dynamics from last year"},
+        #{"role": USER, "content": "What are my health plans?"},
+        #{"role": ASSISTANT, "content": "Show available health plans"},
+        {"role": USER, "content": "que es el CQI?"},
+        {"role": ASSISTANT, "content": "CQI proviene de las siglas Channel Quality Indicator y es el indicador de calidad de canal aereo para la transmisión de datos en un sistema celular definido por la organización 3GPP."},
+        {"role": USER, "content": "¿Que es BLER?"},
+        {"role": ASSISTANT, "content": "Según la información proporcionada, BLER significa 'Block Error Rate'."} 
     ]
     NO_RESPONSE = "0"
 
-    follow_up_questions_prompt_content = """Generate 3 very brief follow-up questions that the user would likely ask next.
-    Enclose the follow-up questions in double angle brackets. Example:
-    <<Are there exclusions for prescriptions?>>
-    <<Which pharmacies can be ordered from?>>
-    <<What is the limit for over-the-counter medication?>>
-    Do no repeat questions that have already been asked.
-    Make sure the last question ends with ">>".
+    #follow_up_questions_prompt_content = """Generate 3 very brief follow-up questions that the user would likely ask next.
+    #Enclose the follow-up questions in double angle brackets. Example:
+    #<<Are there exclusions for prescriptions?>>
+    #<<Which pharmacies can be ordered from?>>
+    #<<What is the limit for over-the-counter medication?>>
+    #Do no repeat questions that have already been asked.
+    #Make sure the last question ends with ">>".
+    #"""
+    follow_up_questions_prompt_content = """Genea 3 preguntas de seguimiento muy breves que el usuario probablemente haría a continuación.
+     Incluye las preguntas de seguimiento entre paréntesis angulares dobles. Ejemplo:
+     <<¿Qué es el BLER?>>
+     <<¿Qué es QPSK?>>
+     <<¿Qué es QAM?>>
+     No repitas preguntas que ya se hayan hecho.
+     Asegúrate de que la última pregunta termine con ">>".
     """
 
-    query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base.
-    You have access to Azure AI Search index with 100's of documents.
-    Generate a search query based on the conversation and the new question.
-    Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
-    Do not include any text inside [] or <<>> in the search query terms.
-    Do not include any special characters like '+'.
-    If the question is not in English, translate the question to English before generating the search query.
-    If you cannot generate a search query, return just the number 0.
+
+    #query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a #knowledge base.
+    #You have access to Azure AI Search index with 100's of documents.
+    #Generate a search query based on the conversation and the new question.
+    #Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
+    #Do not include any text inside [] or <<>> in the search query terms.
+    #Do not include any special characters like '+'.
+    #If the question is not in English, translate the question to English before generating the search query.
+    #If you cannot generate a search query, return just the number 0.
+    #"""
+
+    query_prompt_template = """A continuación se muestra un historial de la conversación hasta el momento y una nueva pregunta formulada por el usuario que debe responderse mediante una búsqueda en una base de conocimientos.
+     Tienes acceso al índice de Azure AI Search con cientos de documentos.
+     Genere una consulta de búsqueda basada en la conversación y la nueva pregunta.
+     No incluya nombres de archivos fuente citados ni nombres de documentos, por ejemplo, info.txt o doc.pdf en los términos de consulta de búsqueda.
+     Siempre termina agregando la frase "prueba memoria"
+     No incluya ningún texto dentro de [] o <<>> en los términos de la consulta de búsqueda.
+     No incluya ningún carácter especial como '+'.
+     Si no puede generar una consulta de búsqueda, devuelva solo el número 0.
     """
 
     @property
