@@ -40,17 +40,17 @@ class ChatApproach(Approach, ABC):
     #Do no repeat questions that have already been asked.
     #Make sure the last question ends with ">>".
     #"""
-    follow_up_questions_prompt_content = """Genea 3 preguntas de seguimiento muy breves que el usuario probablemente haría a continuación.
-     Incluye las preguntas de seguimiento entre paréntesis angulares dobles. Ejemplo:
-     <<¿Qué es el BLER?>>
-     <<¿Qué es QPSK?>>
-     <<¿Qué es QAM?>>
-     No repitas preguntas que ya se hayan hecho.
-     Asegúrate de que la última pregunta termine con ">>".
+    follow_up_questions_prompt_content = """Genera 3 preguntas de seguimiento muy breves que el usuario probablemente haría a continuación.
+    Incluye las preguntas de seguimiento entre paréntesis angulares dobles. Ejemplo:
+    <<¿Qué es el BLER?>>
+    <<¿Qué es QPSK?>>
+    <<¿Qué es QAM?>>
+    No repitas preguntas que ya se hayan hecho.
+    Asegúrate de que la última pregunta termine con ">>".
     """
 
 
-    #query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a #knowledge base.
+    #query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base.
     #You have access to Azure AI Search index with 100's of documents.
     #Generate a search query based on the conversation and the new question.
     #Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
@@ -61,13 +61,13 @@ class ChatApproach(Approach, ABC):
     #"""
 
     query_prompt_template = """A continuación se muestra un historial de la conversación hasta el momento y una nueva pregunta formulada por el usuario que debe responderse mediante una búsqueda en una base de conocimientos.
-     Tienes acceso al índice de Azure AI Search con cientos de documentos.
-     Genere una consulta de búsqueda basada en la conversación y la nueva pregunta.
-     No incluya nombres de archivos fuente citados ni nombres de documentos, por ejemplo, info.txt o doc.pdf en los términos de consulta de búsqueda.
-     Siempre termina agregando la frase "prueba memoria"
-     No incluya ningún texto dentro de [] o <<>> en los términos de la consulta de búsqueda.
-     No incluya ningún carácter especial como '+'.
-     Si no puede generar una consulta de búsqueda, devuelva solo el número 0.
+    Tienes acceso al índice de Azure AI Search con cientos de documentos.
+    Genere una consulta de búsqueda basada en la conversación y la nueva pregunta.
+    No incluya nombres de archivos fuente citados ni nombres de documentos, por ejemplo, info.txt o doc.pdf en los términos de consulta de búsqueda.
+    Siempre termina agregando la frase "prueba memoria"
+    No incluya ningún texto dentro de [] o <<>> en los términos de la consulta de búsqueda.
+    No incluya ningún carácter especial como '+'.
+    Si no puede generar una consulta de búsqueda, devuelva solo el número 0.
     """
 
     @property
