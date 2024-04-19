@@ -1,3 +1,4 @@
+../Azure_names.ps1
 Write-Host "Loading azd .env file from current environment"
 foreach ($line in (& azd env get-values)) {
     if ($line -match "([^=]+)=(.*)") {
